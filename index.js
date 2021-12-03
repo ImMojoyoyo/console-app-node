@@ -1,33 +1,44 @@
-'use strict'
-
 // Importamos la libreria instalada para darle color dentro de nuestra terminal.
 const colors = require('colors');
 
-// Importamos todos los modulos exportamos desde la carpeta ./helpers/messages.
-const {message, pause} = require('./helpers/messages');
+// Importamos todos nuestros modulos:
+const { inquirerMenu, 
+        pause,
+        readInput 
+} = require('./helpers/inquirer');
+const Tasks = require('./models/tasks');
 
-
-console.clear(); // Limpia la consola antes de comenzar el programa.
+console.clear();
 
 // Dentro de la constante main alamacenamos una función asíncrona.
 const main = async() => {
+    let option = ''
+    const _tasks = new Tasks();
 
-    console.log("Hello world!");
-
-    let opt = ''
 
     do{
-        opt = await message();
-        console.log({ opt });
-        if(opt !== '0'){
-            await pause();
+        option = await inquirerMenu();
+        
+        
+        switch (option) {
+            case '1':
+                const desc = await readInput('Description: ');
+                //console.log(desc);
+                _tasks.createTask(desc);
+            break;
+
+            case '2':
+                console.log( _tasks._listado );
+            break;
         }
-    }while(opt !== '0'); 
 
-    
-    
-    
+        
 
+        await pause();
+
+        if(option === '0'){ break }
+        
+    }while(option !== '0'); 
 }
 
 

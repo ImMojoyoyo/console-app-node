@@ -33,7 +33,7 @@ const message = () => {
 
         readLine.question("Select an option: ", (option) => {
             readLine.close(); // Cerramos la linea para ingresar datos
-            resolve(option); // Callback promesa obtiene un parametro tipo string
+            //resolve(option); // Callback promesa obtiene un parametro tipo string
         });
 
 
@@ -55,7 +55,7 @@ const pause = () => {
     
         readLine.question(`\nPress ${ 'ENTER'.green } to continue\n`, (opt) => {
             readLine.close();
-            resolve();
+            //resolve();
         });
 
     });
