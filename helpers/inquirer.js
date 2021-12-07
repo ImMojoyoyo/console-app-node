@@ -71,7 +71,7 @@ const readInput = async( message ) => {
         }
     ];
 
-    const   {desc}   = await inquirer.prompt(question);
+    const   { desc }   = await inquirer.prompt(question);
     return desc;
 
 }

@@ -1,12 +1,12 @@
 // Importamos la libreria instalada para darle color dentro de nuestra terminal.
-const colors = require('colors');
+require('colors');
 
 // Importamos todos nuestros modulos:
 const { inquirerMenu, 
         pause,
         readInput 
 } = require('./helpers/inquirer');
-const { saveData } = require('./helpers/saveData');
+const { saveData, readData } = require('./helpers/processData');
 const Tasks = require('./models/tasks');
 
 console.clear();
@@ -14,10 +14,20 @@ console.clear();
 // Dentro de la constante main alamacenamos una función asíncrona.
 const main = async() => {
     let option = ''
-    const _tasks = new Tasks();
+    const _tasks = new Tasks(); // object
+
+    const _taskDb = readData(); // database
+
+    if( _taskDb ){
+        _tasks.getTask( _taskDb );
+    } 
+    
+    await pause();   
+     
 
 
     do{
+        console.clear();
         option = await inquirerMenu();
         
         
@@ -29,11 +39,11 @@ const main = async() => {
             break;
 
             case '2':
-                console.log( _tasks.saveData );
+               console.log( _tasks.getDataArr );
             break;
         }
 
-        //await saveData( _tasks.saveData );
+        //await saveData( _tasks.getDataArr );
 
         await pause();
 
