@@ -10,31 +10,31 @@ const questionsInquire = [
         choices: [
             {
                 value: '1',
-                name: '1. Create task'
+                name: `${'1.'.green} Create task`
             },
             {
                 value: '2',
-                name: '2. List task'
+                name: `${'2.'.green} List task`
             },
             {
                 value: '3',
-                name: '3. List all the tasks'
+                name: `${'3.'.green} List all the tasks`
             },
             {
                 value: '4',
-                name: '4. For done'
+                name: `${'4.'.green} For done`
             },
             {
                 value: '5',
-                name: '5. Done'
+                name: `${'5.'.green} Done`
             },
             {
                 value: '6',
-                name: '6. Remove'
+                name: `${'6.'.green} Remove`
             },
             {
                 value : '0',
-                name : '0. Exit'
+                name : `${'0.'.green} Exit`
             }
         ]
         

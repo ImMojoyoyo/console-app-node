@@ -6,6 +6,7 @@ const { inquirerMenu,
         pause,
         readInput 
 } = require('./helpers/inquirer');
+const { saveData } = require('./helpers/saveData');
 const Tasks = require('./models/tasks');
 
 console.clear();
@@ -28,11 +29,11 @@ const main = async() => {
             break;
 
             case '2':
-                console.log( _tasks._listado );
+                console.log( _tasks.saveData );
             break;
         }
 
-        
+        //await saveData( _tasks.saveData );
 
         await pause();
 
