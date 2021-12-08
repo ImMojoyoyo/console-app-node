@@ -41,7 +41,7 @@ const main = async() => {
             break;
 
             case '2':
-                _tasks.completedTasks();
+                _tasks.allMyTasks();
             break;
 
             case '3':

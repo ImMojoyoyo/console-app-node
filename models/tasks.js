@@ -38,7 +38,7 @@ class Tasks {
     }
     
     
-    completedTasks(){
+    allMyTasks(){
         console.log(); // Empty space.
         this.getDataArr.forEach( (task, n) => {
                 const index = `${n + 1}`.green;
@@ -57,8 +57,9 @@ class Tasks {
             const {desc , completedIn} = task;
             const state = ( completedIn )
                                 ? 'Completed'.green 
-                                : 'Pending'.red
-            if( completedIn ){
+                                : 'Pending'.red;
+
+            if( completed ){
                 // Show completed
                 if( completedIn ){
                     counter += 1;
