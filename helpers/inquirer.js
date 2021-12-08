@@ -14,23 +14,19 @@ const questionsInquire = [
             },
             {
                 value: '2',
-                name: `${'2.'.green} List task`
+                name: `${'2.'.green} List tasks`
             },
             {
                 value: '3',
-                name: `${'3.'.green} List all the tasks`
+                name: `${'3.'.green} Pending tasks`
             },
             {
                 value: '4',
-                name: `${'4.'.green} For done`
+                name: `${'4.'.green} Completed tasks`
             },
             {
                 value: '5',
-                name: `${'5.'.green} Done`
-            },
-            {
-                value: '6',
-                name: `${'6.'.green} Remove`
+                name: `${'5.'.green} Remove task`
             },
             {
                 value : '0',

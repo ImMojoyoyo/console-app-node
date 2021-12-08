@@ -11,40 +11,56 @@ const Tasks = require('./models/tasks');
 
 console.clear();
 
-// Dentro de la constante main alamacenamos una función asíncrona.
+// Main function
 const main = async() => {
-    let option = ''
-    const _tasks = new Tasks(); // object
+    // Variable empty save the value of input
+    let option = '' 
+    
+    // Object
+    const _tasks = new Tasks();
+    // Database 
+    const _taskDb = readData(); 
 
-    const _taskDb = readData(); // database
-
+    // Condition to know if the DB have data and get it.
     if( _taskDb ){
         _tasks.getTask( _taskDb );
     } 
     
-    await pause();   
      
-
-
+    // Condition / Loop
     do{
-        console.clear();
-        option = await inquirerMenu();
+        console.clear(); // Clear Terminal
+        option = await inquirerMenu(); // Option Value from Terminal.
         
-        
+        // Condition
+        // Some 'option' in the last varible make something on the condition.
         switch (option) {
             case '1':
-                const desc = await readInput('Description: ');
-                //console.log(desc);
-                _tasks.createTask(desc);
+                const desc = await readInput('Description: '); // Read Input
+                _tasks.createTask(desc); // Create Task
             break;
 
             case '2':
-               console.log( _tasks.getDataArr );
+                _tasks.completedTasks();
             break;
+
+            case '3':
+                _tasks.listTasksCompletedAndPending(false);
+            break;
+
+            case '4':
+                _tasks.listTasksCompletedAndPending(true);
+            break;
+            /* 
+            case '5':
+                _tasks.listTasksCompletedAndPending(true);
+            break; */
         }
 
+        // Save data in the file.
         //await saveData( _tasks.getDataArr );
 
+        // Pause to continue.
         await pause();
 
         if(option === '0'){ break }
