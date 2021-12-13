@@ -4,7 +4,9 @@ require('colors');
 // Importamos todos nuestros modulos:
 const { inquirerMenu, 
         pause,
-        readInput 
+        readInput,
+        removeTasksLists,
+        confirm
 } = require('./helpers/inquirer');
 const { saveData, readData } = require('./helpers/processData');
 const Tasks = require('./models/tasks');
@@ -51,14 +53,20 @@ const main = async() => {
             case '4':
                 _tasks.listTasksCompletedAndPending(true);
             break;
-            /* 
+            
             case '5':
-                _tasks.listTasksCompletedAndPending(true);
-            break; */
+                const id = await removeTasksLists( _tasks.getDataArr );
+                const ok = await confirm('¿Are you sure?');
+                if( ok ){
+                    _tasks.removeTasks( id );
+                    console.log("Task deleted correctly");
+                }
+                console.log({ id });
+            break;
         }
 
         // Save data in the file.
-        //await saveData( _tasks.getDataArr );
+        await saveData( _tasks.getDataArr );
 
         // Pause to continue.
         await pause();

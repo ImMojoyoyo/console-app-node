@@ -38,10 +38,6 @@ const questionsInquire = [
 ];
 
 
-
-
-
-
 const inquirerMenu = async() => {
         console.log("=======================".yellow);
         console.log("   Select an option    ");
@@ -87,9 +83,46 @@ const pause = async() =>{
 
 }
 
+const removeTasksLists = async( tasks = [] ) =>{
+   const choices = tasks.map( (task, i) => {
+        const idx = `${ i + 1}`.green;
+
+        return {
+            value : task.id,
+            name : `${ idx } ${ task.desc }`
+        }
+   });
+
+   const questionsInquire = [{
+        type: 'list',
+        name : 'id',
+        message: 'Delete',
+        choices
+    }];
+   const { id } = await inquirer.prompt( questionsInquire );
+   return id;
+}
+
+const confirm = async (message) => {
+
+        const question = [
+            {
+                type : 'confirm',
+                name : 'ok',
+                message : message
+            }
+        ];
+
+    const { ok } = await inquirer.prompt( question );
+    return ok;
+
+}
+
 
 module.exports = {
     inquirerMenu,
     pause,
-    readInput
+    readInput,
+    removeTasksLists,
+    confirm
 }

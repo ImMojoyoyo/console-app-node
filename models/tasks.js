@@ -75,6 +75,13 @@ class Tasks {
         });
  
     }
+
+    removeTasks( id = ''){
+        if( this._listing[id] ){
+            delete this._listing[id];
+        }
+
+    }
     
 }
 
